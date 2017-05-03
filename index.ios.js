@@ -4,11 +4,22 @@
  * @flow
  */
 
-import { showBanner } from './actions/appodeal.js';
-showBanner(true);
+const iOsAppodealKey = '8e485ea405f5f8e3f4f0814eb93c0cc65ce3d4f20465ef12';
+const firebaseConfig = {
+  apiKey: "AIzaSyAa8-I1pTAYLXN3wevuyPrCVE6nWu8nMrE",
+  authDomain: "deportesmadrid-ios.firebaseapp.com",
+  databaseURL: "https://deportesmadrid-ios.firebaseio.com",
+  projectId: "deportesmadrid-ios",
+  storageBucket: "deportesmadrid-ios.appspot.com",
+  messagingSenderId: "799932750810"
+};
+
+import { showBanner, initializeAppodeal} from './actions/appodeal.js';
+initializeAppodeal(iOsAppodealKey)
+showBanner();
 
 import { initFirebase } from './actions/firebase.js';
-const firebaseApp = initFirebase();
+const firebaseApp = initFirebase(firebaseConfig);
 
 import React, { Component } from 'react';
 import {

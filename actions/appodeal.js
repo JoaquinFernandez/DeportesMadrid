@@ -22,12 +22,20 @@ var NATIVE_AD = 32;
 var REWARDED_VIDEO = 128;
 var NON_SKIPPABLE_VIDEO = 256;
 
-export function showBanner(isShow) {
-  Appodeal.initializeWithApiKey('8e485ea405f5f8e3f4f0814eb93c0cc65ce3d4f20465ef12', INTERSTITIAL + BANNER);
-  Appodeal.setTesting(true);
-  if (isShow) {
-    Appodeal.show(BANNER_BOTTOM, (result) => { console.log(result);});
-  } else {
-    Appodeal.hideBanner();
+var initialized = false
+
+export function initializeAppodeal(key) {
+  if (!initialized) {
+    Appodeal.initializeWithApiKey(key, INTERSTITIAL + BANNER);
+    Appodeal.setTesting(true);
+    initialized = true;
   }
+}
+
+export function showBanner() {
+  Appodeal.show(BANNER_BOTTOM, (result) => { console.log(result);});
+}
+
+export function hideBanner() {
+  Appodeal.hideBanner();
 }
