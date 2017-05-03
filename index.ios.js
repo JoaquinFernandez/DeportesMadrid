@@ -7,6 +7,9 @@
 import { showBanner } from './actions/appodeal.js';
 showBanner(true);
 
+import { initFirebase } from './actions/firebase.js';
+const firebaseApp = initFirebase();
+
 import React, { Component } from 'react';
 import {
   AppRegistry,
